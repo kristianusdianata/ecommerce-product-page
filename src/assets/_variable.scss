@@ -1,0 +1,51 @@
+$fontSize: (
+  xs: 10.24px,
+  sm: 12.8px,
+  base: 16px,
+  md: 20px,
+  lg: 25px,
+  xl: 31.25px,
+  2xl: 39.06px,
+  3xl: 48.83px,
+  4xl: 61.04px,
+);
+
+$themeColors: (
+  orange: hsl(26, 100%, 55%),
+  lite-orange: hsl(27, 100%, 71%),
+  pale-orange: hsl(25, 100%, 94%),
+  very-dark-blue: hsl(220, 13%, 13%),
+  dark-grayish-blue: hsl(219, 9%, 45%),
+  grayish-blue: hsl(220, 14%, 75%),
+  light-grayish-blue: hsl(223, 64%, 98%),
+  white: hsl(0, 0%, 100%),
+);
+
+$baseSpaceSize: 4px;
+
+$spacing: (
+  0: 0,
+  1: $baseSpaceSize * 1,
+  2: $baseSpaceSize * 2,
+  3: $baseSpaceSize * 3,
+  4: $baseSpaceSize * 4,
+  5: $baseSpaceSize * 5,
+  6: $baseSpaceSize * 6,
+  8: $baseSpaceSize * 8,
+  10: $baseSpaceSize * 10,
+  12: $baseSpaceSize * 12,
+  16: $baseSpaceSize * 16,
+);
+
+$radius: (
+  br-0: 0,
+  br-1: calc($baseSpaceSize * 0.5),
+  br-2: calc($baseSpaceSize * 1),
+  br-3: calc($baseSpaceSize * 2),
+  br-4: calc($baseSpaceSize * 3),
+  br-5: calc($baseSpaceSize * 4),
+  br-6: calc($baseSpaceSize * 5),
+  br-7: calc($baseSpaceSize * 6),
+  br-8: calc($baseSpaceSize * 8),
+  br-full: 50%,
+);

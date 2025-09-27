@@ -1,0 +1,61 @@
+@use './helper' as *;
+
+@mixin layout-position(
+  $position: null,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $z-index: null
+) {
+  $map: (
+    position: $position,
+    top: $top,
+    right: $right,
+    bottom: $bottom,
+    left: $left,
+    z-index: $z-index,
+  );
+
+  @include applyStyle($map);
+  @content;
+}
+
+@mixin layout-size(
+  $height: null,
+  $width: null,
+  $max-width: null,
+  $max-height: null,
+  $min-width: null,
+  $min-height: null
+) {
+  $map: (
+    block-size: $height,
+    inline-size: $width,
+    max-inline-size: $max-width,
+    max-block-size: $max-height,
+    min-inline-size: $min-width,
+    min-block-size: $min-height,
+  );
+  @include applyStyle($map);
+  @content;
+}
+
+@mixin layout-spacing($margin: null, $padding: null) {
+  $map: (
+    margin: $margin,
+    padding: $padding,
+  );
+
+  @include applyStyle($map);
+  @content;
+}
+
+@mixin layout-background($color: null) {
+  $map: (
+    background-color: $color,
+  );
+
+  @include applyStyle($map);
+  @content;
+}

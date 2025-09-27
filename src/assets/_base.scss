@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use '@style/variable' as *;
+@use '@style/utils/index' as *;
+
+:root {
+  @each $name, $color in $themeColors {
+    --#{"" + $name}: #{$color};
+  }
+}
+
+html {
+  font-size: px-to-percent(map.get($fontSize, base));
+}
+
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  background-color: var(--white);
+}
+
+h1 {
+  @include font-style($font-weight: 700, $font-size: px-to-rem(map.get($fontSize, lg)) + 0.15rem);
+
+  @include media-query-sm() {
+    @include font-style($font-size: px-to-rem(map.get($fontSize, 2xl)) + 0.25rem);
+  }
+}
