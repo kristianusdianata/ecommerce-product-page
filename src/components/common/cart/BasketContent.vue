@@ -5,6 +5,7 @@ import { useLogic } from '@composables'
 import { computed } from 'vue'
 
 const store = useCart()
+
 const calcDiscountPrice = useLogic((args: { discount: number; price: number }) => {
   if (args.discount > 0) {
     return (args.price * args.discount) / 100
@@ -65,7 +66,7 @@ const cartHasItem = computed(() => store.cartItems.length > 0)
             <button
               class="basket__item-delete"
               :aria-label="`Delete ${item.product.name} from cart`"
-              @click="store.removeItem(item.product.id)"
+              @click.stop="store.removeItem(item.product.id)"
             >
               <img src="/images/icon-delete.svg" alt="" aria-hidden="true" />
             </button>

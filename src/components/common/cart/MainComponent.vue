@@ -1,19 +1,33 @@
 <script setup lang="ts">
 import { useCart } from './store'
-import { ref } from 'vue'
-
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import BasketContent from './BasketContent.vue'
 
 const store = useCart()
 const isExpanded = ref<boolean>(false)
+const cartRef = ref<HTMLElement | null>(null)
 
 const toggleButton = () => {
   isExpanded.value = !isExpanded.value
 }
+
+const closeCart = (event: MouseEvent) => {
+  if (cartRef.value && !cartRef.value.contains(event.target as Node)) {
+    isExpanded.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', closeCart)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', closeCart)
+})
 </script>
 
 <template>
-  <div class="cart">
+  <div class="cart" ref="cartRef">
     <button
       class="cart__toggler"
       :aria-expanded="isExpanded"
@@ -36,7 +50,12 @@ const toggleButton = () => {
     >
 
     <Transition name="slide-fade">
-      <BasketContent class="cart__basket" id="cartBasketContent" v-if="isExpanded" />
+      <BasketContent
+        class="cart__basket"
+        id="cartBasketContent"
+        v-if="isExpanded"
+        @click-outside="closeCart"
+      />
     </Transition>
   </div>
 </template>

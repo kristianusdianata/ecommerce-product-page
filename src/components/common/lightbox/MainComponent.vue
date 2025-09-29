@@ -78,9 +78,10 @@ store.setThumbnailUrls(productDetail.thumbnailUrls)
 
 .lightbox {
   &__image {
+    @include layout-size($width: 100%);
     overflow: hidden;
     cursor: initial;
-    @include layout-size($width: 100%);
+    pointer-events: none;
 
     @include media-query-sm() {
       @include border($radius: map.get($radius, br-4));
@@ -88,6 +89,7 @@ store.setThumbnailUrls(productDetail.thumbnailUrls)
 
     @include media-query-lg() {
       cursor: pointer;
+      pointer-events: auto;
     }
 
     & img {
