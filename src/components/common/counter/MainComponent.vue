@@ -2,6 +2,16 @@
 import { useCounter } from './store'
 
 const store = useCounter()
+
+const onInputHandler = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const val = target.value
+
+  if (val === '') store.setCount(0)
+  else if (/^[0-9]+$/.test(val)) store.setCount(Number(String(val)))
+
+  target.value = String(store.count)
+}
 </script>
 
 <template>
@@ -9,7 +19,15 @@ const store = useCounter()
     <button class="counter__button" id="counterDecrement" type="button" @click="store.decrement">
       <img src="/images/icon-minus.svg" alt="Decrease quantity" />
     </button>
-    <input class="counter__input" type="number" :value="store.count" aria-label="Item count" />
+    <input
+      class="counter__input"
+      type="text"
+      inputmode="numeric"
+      :value="store.count"
+      @input="onInputHandler"
+      aria-label="Item count"
+      min="0"
+    />
     <button class="counter__button" id="counterIncrement" type="button" @click="store.increment">
       <img src="/images/icon-plus.svg" alt="Increase quantity" />
     </button>

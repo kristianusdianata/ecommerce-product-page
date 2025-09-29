@@ -4,6 +4,10 @@ import { ref } from 'vue'
 export const useCounter = defineStore('counter', () => {
   const count = ref<number>(0)
 
+  function setCount(value: number) {
+    count.value = value
+  }
+
   function increment() {
     count.value++
   }
@@ -20,6 +24,7 @@ export const useCounter = defineStore('counter', () => {
 
   return {
     count,
+    setCount,
     increment,
     decrement,
     reset,
