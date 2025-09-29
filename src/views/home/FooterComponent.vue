@@ -10,6 +10,8 @@ const cartStore = useCart()
 const counterStore = useCounter()
 
 const onSubmitHandler = () => {
+  if (counterStore.count <= 0) return
+
   if (cartStore.isOnCart(props.data.id)) {
     cartStore.updateTotalItem({ productId: props.data.id, totalItem: counterStore.count })
   } else {
