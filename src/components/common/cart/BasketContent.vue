@@ -94,6 +94,10 @@ const cartHasItem = computed(() => store.cartItems.length > 0)
   -webkit-box-shadow: rgba(151, 143, 143, 0.1) 0px 4px 12px;
   -moz-box-shadow: rgba(151, 143, 143, 0.1) 0px 4px 12px;
 
+  @include media-query-sm() {
+    @include layout-position($z-index: 99);
+  }
+
   &__content {
     @include layout-size($min-height: 240px);
     @include flexbox($display: flex, $direction: column);
@@ -115,13 +119,7 @@ const cartHasItem = computed(() => store.cartItems.length > 0)
 
   &__body {
     @include layout-spacing($padding: px-to-em(map.get($spacing, 6)));
-    @include flexbox(
-      $display: flex,
-      $direction: column,
-      $align: center,
-      $justify: center,
-      $grow: 1
-    );
+    @include flexbox($display: flex, $direction: column, $justify: center, $grow: 1);
   }
 
   &__list {
@@ -171,7 +169,8 @@ const cartHasItem = computed(() => store.cartItems.length > 0)
   &__empty {
     @include font-style(
       $color: var(--dark-grayish-blue),
-      $font-size: px-to-rem(map.get($fontSize, base))
+      $font-size: px-to-rem(map.get($fontSize, base)),
+      $text-align: center
     );
   }
 
